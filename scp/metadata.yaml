@@ -1,0 +1,17 @@
+# Copyright 2021 Erik Lönroth
+# See LICENSE file for licensing details.
+
+name: scp
+display-name: |
+  scp
+description: |
+  Sets up the package restricted-ssh-commands to allow scp-only for a given account.
+summary: |
+  Sets up the package restricted-ssh-commands to allow scp-only for a given account.
+
+storage:
+  data:
+    type: filesystem
+    description: Storage to where scp is allowed.
+    minimum-size: 100M
+    location: /srv/scponly/data

@@ -1,0 +1,3 @@
+^scp
+#TODO: Regexp can be made more secure.
+# ^scp -p( -d)? -t( --)? /srv/scponly/incoming(/[^ /]*)?$

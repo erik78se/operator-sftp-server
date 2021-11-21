@@ -1,0 +1,7 @@
+set-ssh-key:
+  description: "Update/set the public key for user scponly user."
+  params:
+    key:
+      decription: "Public key"
+      type: string
+  required: [ key ]
