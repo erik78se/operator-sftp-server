@@ -2,7 +2,7 @@
 This charm enables copy data via **scp** to a unit at a specified location, 
 but restricts ssh login.
 
-See [src/README.md](src/README.md)
+See [scp/README.md](scp/README.md)
 
 ## Building
 
