@@ -1,6 +1,5 @@
-# scp
-This charm enables copy data via **scp** to a unit at a specified location, 
-but restricts ssh login.
+# sftp-server
+This charm enables sftp for a unit but restricts ssh login.
 
 See [scp/README.md](scp/README.md)
 

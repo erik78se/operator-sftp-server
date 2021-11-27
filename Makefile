@@ -11,7 +11,7 @@ clean: ## Remove .tox and build dirs
 
 ## Build charm
 build: ## Build charm
-	@charmcraft build --from scp
+	@charmcraft build --from sftp-server
 
 # Display target comments in 'make help'
 help: 

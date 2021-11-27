@@ -1,0 +1,17 @@
+# Deployed by charm: sftp-server
+# Dont edit manually.
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding no
+PermitTTY yes
+PrintMotd no
+AcceptEnv LANG LC_*
+
+# This enables sftp for the scpaccess group.
+
+Subsystem sftp internal-sftp
+Match Group sftpaccess
+     ChrootDirectory %h
+     ForceCommand internal-sftp
