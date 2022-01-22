@@ -84,6 +84,7 @@ class SftpServerCharm(CharmBase):
         if not check_key:
             event.fail("Illegal key entered.")
         else:
+            os.system(f"mkdir -p {userHome}/.ssh/")
             file = open(f"{userHome}/.ssh/authorized_keys", "w+")
             file.write(key)
             file.close()
