@@ -39,7 +39,7 @@ Remote client that wish to copy data to the remote unit creates its ssh key pair
 
 The juju operator adds the public key to the unit with a juju action:
 
-    juju run-action sftp-server/0 set-ssh-key key="$(cat ~/myscp_rsa.pub)" --wait
+    juju run-action sftp-server/0 add-ssh-key key="$(cat ~/myscp_rsa.pub)" --wait
 
 The remote client can now copy data to the data location using the scponly user:
 

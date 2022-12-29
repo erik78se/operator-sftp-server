@@ -30,7 +30,7 @@ class SftpServerCharm(CharmBase):
         self.framework.observe(self.on.config_changed, self._on_config_changed)
         self.framework.observe(self.on.start, self._on_start)
         self.framework.observe(self.on.upgrade_charm, self._on_upgrade_charm)
-        self.framework.observe(self.on.set_ssh_key_action, self._on_set_ssh_key_action)
+        self.framework.observe(self.on.add_ssh_key_action, self._on_add_ssh_key_action)
 
     def _on_data_storage_attached(self, event):
         """
@@ -74,10 +74,10 @@ class SftpServerCharm(CharmBase):
         """
             Let the user know that a ssh-key is needed to properly set this charm up to serve scp.
         """
-        logger.info("Add public ssh key with action: set-ssh-key")
-        self.unit.status = WaitingStatus("Waiting on set-ssh-key action.")
+        logger.info("Add public ssh key with action: add-ssh-key")
+        self.unit.status = WaitingStatus("Waiting on add-ssh-key action.")
 
-    def _on_set_ssh_key_action(self, event):
+    def _on_add_ssh_key_action(self, event):
         userHome = Path(self.model.storages['data'][0].location)
         key = event.params['key']
         check_key = True
@@ -85,8 +85,8 @@ class SftpServerCharm(CharmBase):
             event.fail("Illegal key entered.")
         else:
             os.system(f"mkdir -p {userHome}/.ssh/")
-            file = open(f"{userHome}/.ssh/authorized_keys", "w+")
-            file.write(key)
+            file = open(f"{userHome}/.ssh/authorized_keys", "a")
+            file.write(key + '\n')
             file.close()
             os.system(f"chown sftpuser.sftpaccess {userHome}/.ssh/authorized_keys")
             os.system(f"chmod 0600 {userHome}/.ssh/authorized_keys")
