@@ -3,7 +3,7 @@ This charm enables sftp for a sftpuser but restricts ssh login.
 
 The operator uses an action to deploy a public key to be used as the authentication mechanism.
 
-The charm supports using [juju storage] for persistent storage at */srv/onlyscp/data*
+The charm supports using [juju storage] for persistent storage at */srv/sftpuser*
 
 ## Usage
 
@@ -41,9 +41,10 @@ The juju operator adds the public key to the unit with a juju action:
 
     juju run-action sftp-server/0 add-ssh-key key="$(cat ~/myscp_rsa.pub)" --wait
 
-The remote client can now copy data to the data location using the scponly user:
+The remote client can now copy data to the data location using the sftpuser user:
 
     sftp -i ./myscp_rsa sftpuser@192.168.2.144
+    put /path/to/file data
 
 
 ## Authors
