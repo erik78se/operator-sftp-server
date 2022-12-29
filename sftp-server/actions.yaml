@@ -1,5 +1,5 @@
-set-ssh-key:
-  description: "Update/set the public key for user scponly user."
+add-ssh-key:
+  description: "Add a public key as authorized for the sftpuser."
   params:
     key:
       decription: "Public key"
