@@ -56,8 +56,7 @@ class SftpServerCharm(CharmBase):
         os.system(f"adduser sftpuser --ingroup sftpaccess --home /srv/sftpuser --no-create-home --shell  /usr/sbin/nologin --disabled-password --gecos ''")
         os.system(f"mkdir -p {userHome}/.ssh")
         os.system(f"chmod 0700 {userHome}/.ssh")
-        os.system(f"chown root.root {userHome}")
-        os.system(f"chown -R sftpuser.sftpaccess {userHome}/.ssh")
+        os.system(f"chown -R sftpuser.sftpaccess {userHome}")
 
         # Install the restricted-ssh-command package that helps with scp-only-ssh-feature
         shutil.copyfile('templates/etc/ssh/sshd_config',
